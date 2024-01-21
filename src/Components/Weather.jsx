@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const API_URL = `https://api.openweathermap.org/data/2.5/weather`;
-const API_KEY = '8a66d5905111bc8bdc93115f3d562b9f';
+const API_KEY = process.env.REACT_APP_WEATHER_API;
 const WEATHER_ICONS = {
   Clouds: process.env.PUBLIC_URL + "/assets/images/cloudy.png",
   Fog: process.env.PUBLIC_URL + "/assets/images/foggy.png",
@@ -103,7 +103,7 @@ const Weather = () => {
                 {/* Weather Details */}
                 <div className="h-3/5 grid-cols-2 flex">
                   <div className="w-3/5 py-4">
-                    <h1 className="text-4xl">{weatherData.country}, {weatherData.code}</h1>
+                    <h1 className="text-4xl font-bold">{weatherData.country}, {weatherData.code}</h1>
                     <h1 className="text-lg">{weatherData.date}</h1>
                     <h1 className="text-sm">{weatherData.time}</h1>
                     <br />
@@ -113,7 +113,7 @@ const Weather = () => {
                   {/* Weather Icon and Description */}
                   <div className="w-2/5 flex flex-col items-center">
                     <img className="h-48 w-48 -mt-2" src={WEATHER_ICONS[weatherData.status]} alt="weather-icons" />
-                    <h1 className="text-3xl -mt-2">{weatherData.status}</h1>
+                    <h1 className="text-3xl -mt-2 font-bold">{weatherData.status}</h1>
                   </div>
                 </div>
 
